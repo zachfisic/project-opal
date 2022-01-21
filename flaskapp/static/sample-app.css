@@ -1,3 +1,11 @@
-.jumbotron {
-    margin-top: 1em;
+.artist {
+    display: flex;
+}
+.artist-img {
+    width: 160px;
+    height: 160px;
+    background: #000000;
+}
+.artist-info {
+    padding: 1em;
 }

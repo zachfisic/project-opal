@@ -1,0 +1,16 @@
+{%- extends "base.html" %}
+{% import "bootstrap/utils.html" as utils %}
+{% block content %}
+<div id="top_artists">
+    {% for item in artists.st_items %}
+    <div class="artist">
+        <div class="artist-img"><img src="{{item.images[2].url}}" /></div>
+        <div class="artist-info">
+            <p>{{ item.name }}</p>
+            <p>{{ ', '.join(item.genres) }}</p>
+            <p><a href="{{ item.external_urls.spotify }}">Artist Page</a></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{%- endblock %}

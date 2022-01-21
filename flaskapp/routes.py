@@ -4,6 +4,7 @@ import spotipy as sp
 from flask import session, request, redirect, render_template, url_for
 from flaskapp import app
 from flaskapp.config import get_cache_dir
+from pprint import pprint
 
 
 def session_cache_path():
@@ -92,3 +93,21 @@ def sign_out():
     except OSError as e:
         print(f"Error: {e.filename} - {e.strerror}.")
     return redirect('/')
+
+
+@app.route('/top_artists')
+def usage():
+    cache_handler = sp.cache_handler.CacheFileHandler(cache_path=session_cache_path())
+    auth_manager = sp.oauth2.SpotifyOAuth(cache_handler=cache_handler)
+    if not auth_manager.validate_token(cache_handler.get_cached_token()):
+        return redirect('/')
+    spotify = sp.Spotify(auth_manager=auth_manager)
+
+
+    st = spotify.current_user_top_artists(time_range='short_term', limit=50)
+    artists = {
+        "st_href": st['href'], # "https://api.spotify.com/v1/me/top/artists?limit=50&offset=0&time_range=short_term"
+        "st_items": st['items']
+    }
+    return render_template('top_artists.html', artists=artists)
+    # return st
