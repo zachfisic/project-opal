@@ -4,10 +4,15 @@
 <div class="container">        
     <h2>Hello {{user.username}}, <small><a href="/sign_out">[sign out]<a></small></h2>
     <ul>
-        <li><a href="/playlists">my playlists</a></li>
-        <li><a href="/currently_playing">currently playing</a></li>
-        <li><a href="/current_user">me</a></li>
-        <li><a href="/top_artists">top artists</a></li>
+        <li><a href="{{ url_for('user.current_user') }}">current user</a></li>
+        <li><a href="{{ url_for('user.current_playback') }}">current playback</a></li>
+        <li><a href="{{ url_for('user.currently_playing') }}">currently playing</a></li>
+        <li><a href="{{ url_for('user.current_user_playing_track') }}">current user playing track</a></li>
+        <li><a href="{{ url_for('user.current_user_top_artists') }}">current_user_top artists</a></li>
+        <li><a href="{{ url_for('user.current_user_followed_artists') }}">current user followed artists</a></li>
+        <li><a href="{{ url_for('user.current_user_playlists') }}">current user playlists</a></li>
+        <li><a href="{{ url_for('user.current_user_recently_played') }}">current user recently played</a></li>
+        <li><a href="{{ url_for('user.current_user_saved_albums') }}">current user saved albums</a></li>
     </ul>
 </div>
 {%- endblock %}

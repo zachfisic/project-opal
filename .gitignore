@@ -3,7 +3,7 @@
 .flask_session
 .spotify_caches
 *.code-workspace
-
+SETUP.md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
