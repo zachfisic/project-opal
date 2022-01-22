@@ -16,8 +16,14 @@ def create_app(config_class=DevelopmentConfig):
     session.init_app(app)
     bootstrap.init_app(app)
 
-    from flaskapp.user import bp as user_bp
+    # Register bluprints
+    from flaskapp.auth import auth as auth_bp
+    app.register_blueprint(auth_bp)
+
+    from flaskapp.main import main as main_bp
+    app.register_blueprint(main_bp)
+
+    from flaskapp.user import user as user_bp
     app.register_blueprint(user_bp)
-    
     
     return app
