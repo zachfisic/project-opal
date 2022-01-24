@@ -1,10 +1,16 @@
-from json import load
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
 def get_cache_dir():
+    """Gets the directory used for cached OAuth Spotify tokens.
+
+    The directory is created if it does not exist.
+
+    Returns:
+        The directory of the Spotify cache folder
+    """
     caches_folder = './.spotify_caches/'
     if not os.path.exists(caches_folder):
         os.makedirs(caches_folder)

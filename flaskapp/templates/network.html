@@ -1,0 +1,80 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Alexi Murdoch", "image": "https://i.scdn.co/image/ab6761610000f1785403b0487846cc6417301d09", "label": " ", "shape": "circularImage", "title": "Alexi Murdoch", "value": 1}, {"id": "AlunaGeorge", "image": "https://i.scdn.co/image/ab6761610000f17829faf55cd6eb39b4810b816d", "label": " ", "shape": "circularImage", "title": "AlunaGeorge", "value": 1}, {"id": "Ben B\u00f6hmer", "image": "https://i.scdn.co/image/ab6761610000f178a8a48c12973f1621a9eea81d", "label": " ", "shape": "circularImage", "title": "Ben B\u00f6hmer", "value": 1}, {"id": "Black Pumas", "image": "https://i.scdn.co/image/ab6761610000f178026d3ed0a2800958c1d59f4f", "label": " ", "shape": "circularImage", "title": "Black Pumas", "value": 5}, {"id": "Bob Saker", "image": "https://i.scdn.co/image/ab67616d000048518e9e6ed824bb0e9095f35885", "label": " ", "shape": "circularImage", "title": "Bob Saker", "value": 1}, {"id": "Cubicolor", "image": "https://i.scdn.co/image/ab6761610000f17878acdefd2f3c0096475155d2", "label": " ", "shape": "circularImage", "title": "Cubicolor", "value": 1}, {"id": "Damien Jurado", "image": "https://i.scdn.co/image/ab6761610000f17860e6bb4c4d216f1d3df0c1d3", "label": " ", "shape": "circularImage", "title": "Damien Jurado", "value": 1}, {"id": "Disclosure", "image": "https://i.scdn.co/image/ab6761610000f178784a17787904570df53ae9a2", "label": " ", "shape": "circularImage", "title": "Disclosure", "value": 5}, {"id": "Duke Dumont", "image": "https://i.scdn.co/image/ab6761610000f178208e2d15d19c97801c0bd5fc", "label": " ", "shape": "circularImage", "title": "Duke Dumont", "value": 1}, {"id": "Durand Jones \u0026 The Indications", "image": "https://i.scdn.co/image/ab6761610000f178e8611a96977e7c7a04a1fbdf", "label": " ", "shape": "circularImage", "title": "Durand Jones \u0026 The Indications", "value": 1}, {"id": "Earl St. Clair", "image": "https://i.scdn.co/image/ab6761610000f17861b4e0344802be464a4e1213", "label": " ", "shape": "circularImage", "title": "Earl St. Clair", "value": 1}, {"id": "Fionn Regan", "image": "https://i.scdn.co/image/ab6761610000f17853a37549e57023347857f785", "label": " ", "shape": "circularImage", "title": "Fionn Regan", "value": 1}, {"id": "Gorgon City", "image": "https://i.scdn.co/image/ab6761610000f17891470284b60c9b94903a5536", "label": " ", "shape": "circularImage", "title": "Gorgon City", "value": 1}, {"id": "Hal David, John Cacavas", "image": null, "label": " ", "shape": "circularImage", "title": "Hal David, John Cacavas", "value": 1}, {"id": "Hosini", "image": "https://i.scdn.co/image/ab6761610000f1782a5d8c13cf4d8eee5ba127ea", "label": " ", "shape": "circularImage", "title": "Hosini", "value": 1}, {"id": "Iron \u0026 Wine", "image": "https://i.scdn.co/image/ab6761610000f1786a521312add75461d989f671", "label": " ", "shape": "circularImage", "title": "Iron \u0026 Wine", "value": 1}, {"id": "Jamie xx", "image": "https://i.scdn.co/image/ab6761610000f1784dbb796358938e4cc1f75f8b", "label": " ", "shape": "circularImage", "title": "Jamie xx", "value": 1}, {"id": "Jeff Gustafson", "image": "https://i.scdn.co/image/ab67616d000048519a524aa430a5b1a6ea573fbb", "label": " ", "shape": "circularImage", "title": "Jeff Gustafson", "value": 1}, {"id": "John Grant", "image": "https://i.scdn.co/image/ab6761610000f1787db9f5b350447e5800316307", "label": " ", "shape": "circularImage", "title": "John Grant", "value": 1}, {"id": "Jose Le Gall", "image": null, "label": " ", "shape": "circularImage", "title": "Jose Le Gall", "value": 1}, {"id": "Jos\u00e9 Gonz\u00e1lez", "image": "https://i.scdn.co/image/ab6761610000f178db7c07bb0c0ff17cddf8bc0a", "label": " ", "shape": "circularImage", "title": "Jos\u00e9 Gonz\u00e1lez", "value": 5}, {"id": "Junip", "image": "https://i.scdn.co/image/9f56dda0d9fb36db9729ed2d7198496dd7cee6a0", "label": " ", "shape": "circularImage", "title": "Junip", "value": 1}, {"id": "Kings of Convenience", "image": "https://i.scdn.co/image/ab6761610000f1781939266c86e2b7d1be508b9c", "label": " ", "shape": "circularImage", "title": "Kings of Convenience", "value": 1}, {"id": "Lane 8", "image": "https://i.scdn.co/image/ab6761610000f178a63ca9a9ed590b0f7c9633a7", "label": " ", "shape": "circularImage", "title": "Lane 8", "value": 5}, {"id": "Laura Marling", "image": "https://i.scdn.co/image/ab6761610000f17827b15f8b52128db1fdab4f30", "label": " ", "shape": "circularImage", "title": "Laura Marling", "value": 1}, {"id": "Luttrell", "image": "https://i.scdn.co/image/ab6761610000f178aad9c25bebefc875e8711e80", "label": " ", "shape": "circularImage", "title": "Luttrell", "value": 1}, {"id": "Nick Drake", "image": "https://i.scdn.co/image/9a74a7d885abe5da94ac812546d0146cfe4a1ceb", "label": " ", "shape": "circularImage", "title": "Nick Drake", "value": 1}, {"id": "SBTRKT", "image": "https://i.scdn.co/image/ab6761610000f178f467c1263e19f4344e62012f", "label": " ", "shape": "circularImage", "title": "SBTRKT", "value": 1}, {"id": "Sharon Van Etten", "image": "https://i.scdn.co/image/ab6761610000f178d6bc47b2e1f7fdbf5a0a3457", "label": " ", "shape": "circularImage", "title": "Sharon Van Etten", "value": 1}, {"id": "Son Little", "image": "https://i.scdn.co/image/ab6761610000f1788bf0dfc4c91b7c45e080460b", "label": " ", "shape": "circularImage", "title": "Son Little", "value": 1}, {"id": "St. Paul \u0026 The Broken Bones", "image": "https://i.scdn.co/image/ab6761610000f1780269ca2ff5e84f70cd2cab9e", "label": " ", "shape": "circularImage", "title": "St. Paul \u0026 The Broken Bones", "value": 1}, {"id": "Stephen Lang", "image": "https://i.scdn.co/image/ab67616d00004851e9c3dbe5c6816572e5af420f", "label": " ", "shape": "circularImage", "title": "Stephen Lang", "value": 1}, {"id": "The Dip", "image": "https://i.scdn.co/image/ab6761610000f178125d660e783cb05238711c3a", "label": " ", "shape": "circularImage", "title": "The Dip", "value": 1}, {"id": "Tom Howe", "image": "https://i.scdn.co/image/ab67616d00004851d69b7f192ae12043282aadac", "label": " ", "shape": "circularImage", "title": "Tom Howe", "value": 5}, {"id": "Villagers", "image": "https://i.scdn.co/image/ab6761610000f178ef1ce3c76ebd01753fc14c63", "label": " ", "shape": "circularImage", "title": "Villagers", "value": 5}, {"id": "Yotto", "image": "https://i.scdn.co/image/ab6761610000f17854a70b3f60c6a33e0b70d003", "label": " ", "shape": "circularImage", "title": "Yotto", "value": 1}]);
+        edges = new vis.DataSet([{"from": "Black Pumas", "to": "Durand Jones \u0026 The Indications"}, {"from": "Black Pumas", "to": "St. Paul \u0026 The Broken Bones"}, {"from": "Black Pumas", "to": "The Dip"}, {"from": "Black Pumas", "to": "Earl St. Clair"}, {"from": "Black Pumas", "to": "Son Little"}, {"from": "Tom Howe", "to": "Jeff Gustafson"}, {"from": "Tom Howe", "to": "Bob Saker"}, {"from": "Tom Howe", "to": "Stephen Lang"}, {"from": "Tom Howe", "to": "Hal David, John Cacavas"}, {"from": "Tom Howe", "to": "Jose Le Gall"}, {"from": "Jos\u00e9 Gonz\u00e1lez", "to": "Alexi Murdoch"}, {"from": "Jos\u00e9 Gonz\u00e1lez", "to": "Kings of Convenience"}, {"from": "Jos\u00e9 Gonz\u00e1lez", "to": "Junip"}, {"from": "Jos\u00e9 Gonz\u00e1lez", "to": "Iron \u0026 Wine"}, {"from": "Jos\u00e9 Gonz\u00e1lez", "to": "Nick Drake"}, {"from": "Villagers", "to": "Fionn Regan"}, {"from": "Villagers", "to": "Laura Marling"}, {"from": "Villagers", "to": "John Grant"}, {"from": "Villagers", "to": "Sharon Van Etten"}, {"from": "Villagers", "to": "Damien Jurado"}, {"from": "Lane 8", "to": "Yotto"}, {"from": "Lane 8", "to": "Luttrell"}, {"from": "Lane 8", "to": "Cubicolor"}, {"from": "Lane 8", "to": "Hosini"}, {"from": "Lane 8", "to": "Ben B\u00f6hmer"}, {"from": "Disclosure", "to": "AlunaGeorge"}, {"from": "Disclosure", "to": "SBTRKT"}, {"from": "Disclosure", "to": "Jamie xx"}, {"from": "Disclosure", "to": "Gorgon City"}, {"from": "Disclosure", "to": "Duke Dumont"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {"nodes": {"shape": "diamond", "size": 100}, "color": {"highlight": {"border": "rgba(48,103,84,1)", "background": "rgba(188,233,84,1)"}}, "edges": {"color": {"highlight": "rgba(65,163,23,1)", "inherit": true, "opacity": 0.25}, "shadow": {"enabled": true}, "smooth": {"type": "continuous", "forceDirection": "none"}}, "physics": {"forceAtlas2Based": {"springLength": 100}, "minVelocity": 0.75, "solver": "forceAtlas2Based"}};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
