@@ -2,9 +2,9 @@ import pandas as pd
 import networkx as nx
 from pyvis.network import Network
 from flask import render_template
-from flaskapp.views.auth.func import authorize
-from flaskapp.views.user.graphs import graphs
-from flaskapp.views.user.graphs.func import create_top_artists_dataframe, create_related_artists_dataframe
+from flaskapp.components.auth.func import authorize
+from flaskapp.components.user.graphs import graphs
+from flaskapp.components.user.graphs.func import create_top_artists_dataframe, create_related_artists_dataframe
 
 @graphs.route('/favorite_artists')
 @authorize

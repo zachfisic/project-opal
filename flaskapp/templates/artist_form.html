@@ -1,0 +1,20 @@
+{%- extends "index.html" %}
+{% block page_content %}
+    <div>
+        {% if form.artist_id.errors %}
+            <ul class="errors">
+            {% for error in form.artist_id.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        <form action="" method="post" novalidate>
+            <p>
+                {{ form.csrf_token }}
+                {{ form.artist_id.label }}<br>
+                {{ form.artist_id(size=32) }}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+{% endblock %}

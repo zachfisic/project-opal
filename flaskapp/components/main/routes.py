@@ -1,7 +1,7 @@
 import spotipy as sp
 from flask import current_app, render_template
-from flaskapp.views.auth.func import session_cache_path, set_session_id
-from flaskapp.views.main import main
+from flaskapp.components.auth.func import session_cache_path, set_session_id
+from flaskapp.components.main import main
 
 
 @main.route('/')
@@ -27,4 +27,4 @@ def index():
     user = {
         'username': spotify.me()["display_name"]
     }
-    return render_template('index.html', user=user)
+    return render_template('user.html', user=user)

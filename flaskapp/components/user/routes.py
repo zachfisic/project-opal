@@ -1,7 +1,7 @@
 import os
 from flask import session, redirect, url_for
-from flaskapp.views.auth.func import session_cache_path
-from flaskapp.views.user import user
+from flaskapp.components.auth.func import session_cache_path
+from flaskapp.components.user import user
 
 
 @user.route('/sign_out')

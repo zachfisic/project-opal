@@ -15,13 +15,16 @@ def create_app(config_class=DevelopmentConfig):
     bootstrap.init_app(app)
 
     # Register bluprints
-    from flaskapp.views.auth import auth as auth_bp
+    from flaskapp.components.auth import auth as auth_bp
     app.register_blueprint(auth_bp)
 
-    from flaskapp.views.main import main as main_bp
+    from flaskapp.components.main import main as main_bp
     app.register_blueprint(main_bp)
 
-    from flaskapp.views.user import user as user_bp
+    from flaskapp.components.spotify import spotify as spotify_bp
+    app.register_blueprint(spotify_bp)
+
+    from flaskapp.components.user import user as user_bp
     app.register_blueprint(user_bp)
     
     return app

@@ -1,7 +1,7 @@
 import spotipy as sp
 from flask import request, current_app, redirect, url_for
-from flaskapp.views.auth import auth
-from flaskapp.views.auth.func import session_cache_path
+from flaskapp.components.auth import auth
+from flaskapp.components.auth.func import session_cache_path
 
 
 @auth.route('/auth/spotify/callback')

@@ -1,6 +1,6 @@
 from flask import render_template
-from flaskapp.views.auth.func import authorize
-from flaskapp.views.user.stats import stats
+from flaskapp.components.auth.func import authorize
+from flaskapp.components.user.stats import stats
 
 @stats.route('/current_user')
 @authorize

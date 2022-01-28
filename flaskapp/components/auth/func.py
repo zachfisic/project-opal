@@ -46,5 +46,22 @@ def authorize(f):
         if not auth_manager.validate_token(cache_handler.get_cached_token()):
             return redirect(url_for('main.index'))
         spotify = sp.Spotify(auth_manager=auth_manager)
-        return f(spotify, *args, **kws)            
+        return f(spotify, *args, **kws)
+    return decorated_function
+
+
+
+def use_client_credentials(f):
+    """Decorates a function with Spotify client credentials.
+
+    The Client Credentials flow does not require user authentication.
+
+    Returns:
+        A decorator. The wrapped function provides an instance of Spotify that can only work with non-user related Spotify data.
+    """
+    @wraps(f)
+    def decorated_function(*args, **kws):
+        cc_manager = sp.oauth2.SpotifyClientCredentials()
+        spotify = sp.Spotify(client_credentials_manager=cc_manager)
+        return f(spotify, *args, **kws)
     return decorated_function

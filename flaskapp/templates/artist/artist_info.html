@@ -1,0 +1,32 @@
+{%- extends "index.html" %}
+{% block page_content %}
+    <div>
+        <div id="artist">
+            <div id="artist-image">
+                <img src="{{artist['images'][1].url}}"" />
+            </div>
+            <div id="artist-info">
+                <h1>{{artist['name']}}</h1>
+                <p><span>Followers: {{artist['followers']['total']}}</span> | <span>Popularity: {{artist['popularity']}}</span></p>
+                <h4>Genres</h4>
+                <ul>
+                    {% for genre in artist['genres'] %}
+                    <li>{{ genre }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div id="related-artists">
+            <h4>Related Artists</h4>
+            <ul>
+                {% for related_artist in related_artists %}
+                <li>
+                    <a href="{{ url_for('spotify.discover.artist', artist_id=related_artist['id']) }}">
+                        <img title="{{ related_artist['name'] }}" src="{{ related_artist['images'][2].url }}" />
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

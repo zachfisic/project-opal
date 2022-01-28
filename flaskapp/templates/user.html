@@ -1,0 +1,20 @@
+{%- extends "index.html" %}
+{% block page_content %}
+<div>
+    <h2>Hello {{user.username}}, <small><a href="{{ url_for('user.sign_out') }}">[sign out]<a></small></h2>
+    <ul>
+        <li><a href="{{ url_for('user.graphs.favorite_artists') }}">favorite_artists_network</a></li>
+    </ul>
+    <ul>
+        <li><a href="{{ url_for('user.stats.current_user') }}">current user</a></li>
+        <li><a href="{{ url_for('user.stats.current_playback') }}">current playback</a></li>
+        <li><a href="{{ url_for('user.stats.currently_playing') }}">currently playing</a></li>
+        <li><a href="{{ url_for('user.stats.current_user_playing_track') }}">current user playing track</a></li>
+        <li><a href="{{ url_for('user.stats.current_user_top_artists') }}">current_user_top artists</a></li>
+        <li><a href="{{ url_for('user.stats.current_user_followed_artists') }}">current user followed artists</a></li>
+        <li><a href="{{ url_for('user.stats.current_user_playlists') }}">current user playlists</a></li>
+        <li><a href="{{ url_for('user.stats.current_user_recently_played') }}">current user recently played</a></li>
+        <li><a href="{{ url_for('user.stats.current_user_saved_albums') }}">current user saved albums</a></li>
+    </ul>
+</div>
+{%- endblock %}

@@ -1,0 +1,52 @@
+h1,h2,h3,h4,h5,h6 {
+    font-family: Menlo, 'Courier New', Courier, monospace;
+}
+#app-title {
+    font-size: 24px;
+    padding: 1em 0;
+}
+
+#artist-image {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 1em;
+}
+#artist-info {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.artist {
+    display: flex;
+}
+.artist-img {
+    width: 160px;
+    height: 160px;
+    background: #000000;
+}
+.artist-info {
+    padding: 1em;
+}
+#related-artists {
+    margin: 2em 0;
+}
+#related-artists ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#related-artists ul li {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    background: #000;
+    margin: 2px 0;
+}
+#related-artists ul li a {
+    display: block;
+}
+#related-artists ul li img {
+    width: 100px;
+}

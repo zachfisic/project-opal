@@ -1,0 +1,10 @@
+{%- extends "index.html" %}
+{% block page_content %}
+<h2>Spotify</h2>
+<div>
+    <ul>
+        <li><a href="{{ url_for('spotify.discover.index') }}">Discover</a></li>
+        <li><a href="{{ url_for('spotify.graphs.index') }}">Graphs</a></li>
+    </ul>
+</div>
+{%- endblock %}
