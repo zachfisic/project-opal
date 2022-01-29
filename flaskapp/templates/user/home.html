@@ -1,0 +1,16 @@
+{%- extends "index.html" %}
+{% block page_content %}
+<div>
+    <h3>{{current_user.username}}</h3>
+    <ul>
+        <h4>Saved Artists</h4>
+        
+    </ul>
+    <ul>
+        <h4>Suggested Artists</h4>
+        {% for artist in artists %}
+        <li><a>{{artist['name']}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{%- endblock %}

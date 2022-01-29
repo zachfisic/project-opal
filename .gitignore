@@ -4,6 +4,7 @@
 .spotify_caches
 *.code-workspace
 SETUP.md
+flaskapp.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

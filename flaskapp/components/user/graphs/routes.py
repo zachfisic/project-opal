@@ -1,6 +1,4 @@
 import pandas as pd
-import networkx as nx
-from pyvis.network import Network
 from flask import render_template
 from flaskapp.components.auth.func import authorize
 from flaskapp.components.user.graphs import graphs

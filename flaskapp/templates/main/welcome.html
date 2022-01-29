@@ -1,0 +1,18 @@
+{%- extends "index.html" %}
+{% block page_content %}
+<div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <ul>
+        <li><a href="{{url_for('main.register')}}">Register</li>
+        <li><a href="{{url_for('main.login')}}">Login</li>
+    </ul>
+</div>
+{%- endblock %}
